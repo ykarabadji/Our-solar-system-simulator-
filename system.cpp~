@@ -1,0 +1,48 @@
+#include <SFML/Audio.hpp>
+#include <SFML/Graphics.hpp>
+#include <cstdlib> // For EXIT_SUCCESS
+#include <SFML/Graphics.hpp>
+ 
+#include "physics.h"
+#include "keymouse.h"
+using namespace sf;
+
+int main() {
+    
+    RenderWindow window(VideoMode(800, 600), "Solar System");
+    sf::Vector2f center(window.getSize().x / 2.0f, window.getSize().y / 2.0f);
+
+    CircleShape sun;
+
+   window.setMouseCursorGrabbed(true);
+window.setMouseCursorVisible(false);
+
+    sun.setRadius(Bsun.radius);
+    sun.setFillColor(sf::Color(255, 204, 0));  // RGB: yellow-orange
+    sun.setOutlineColor(sf::Color(255, 102, 0)); // darker orange outline
+    sun.setOutlineThickness(2.0f);
+    
+   
+    sun.setOrigin(sun.getRadius(), sun.getRadius()); // set origin to center
+    sun.setPosition(center); 
+    while(window.isOpen()) {
+        Event event;
+        while(window.pollEvent(event)) {
+            if(event.type == Event::Closed)
+                window.close();
+	  
+        }
+	mousecontrol(window);
+	  sun.setPosition(center.x - cam.yaw, center.y - cam.pitch);
+	window.clear();
+	
+        window.draw(sun);
+        window.setMouseCursorGrabbed(true);
+window.setMouseCursorVisible(false);
+sf::Mouse::setPosition(sf::Vector2i(window.getSize().x / 2, window.getSize().y / 2), window);
+
+        window.display();
+    }
+
+    return EXIT_SUCCESS;
+}

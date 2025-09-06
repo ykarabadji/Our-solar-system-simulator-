@@ -1,0 +1,47 @@
+#ifndef PYS_H
+#define PYS_H
+
+
+#include <SFML/Audio.hpp>
+#include <SFML/Graphics.hpp>
+
+
+struct velocity{
+  float Vx;
+  float Vy;
+};
+struct position{
+  float x;
+  float y;
+};
+struct Body{
+  float radius;
+  position pos;
+  velocity velo;
+};
+
+
+// Initialize bodies directly
+inline Body Bsun  = {40, {0,0}, {0,0}};
+inline Body Bearth = {17, {200,0}, {0,5}};
+inline Body Bmars = {15, {300,0}, {0,4}};
+inline Body Bmoon;
+
+
+
+
+#endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
